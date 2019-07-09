@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ProductCard from './ProductCard'
+import styles from './products-list.module.scss'
 
 class Products extends Component {
   state = {
@@ -10,7 +11,8 @@ class Products extends Component {
     fetch('http://localhost:4000/api/products')
       .then(res => res.json())
       .then(data => {
-        console.log(data.products[0].name)
+        console.log("data", data)
+        console.log("names", data.products[0].name)
         this.setState({
           products: data.products
         })
@@ -26,10 +28,11 @@ class Products extends Component {
         <header className="App-header">
           <h1> Products List </h1>
         </header>
-
-      {this.state.products.map(product => {
-        return <ProductCard />
-      })}
+        <div className={styles.productsContainer}>
+          {this.state.products.map(product => {
+            return <ProductCard key={product.id} />
+          })}
+        </div>
 
       </div>
     )
