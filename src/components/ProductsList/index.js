@@ -24,13 +24,20 @@ class Products extends Component {
 
   render() {
     return (
-      <div>
-        <header className="App-header">
+      <div className={styles.container}>
+        <header >
           <h1> Products List </h1>
         </header>
         <div className={styles.productsContainer}>
           {this.state.products.map(product => {
-            return <ProductCard key={product.id} />
+            return (
+            <ProductCard 
+              key={product.id} 
+              name={product.name}
+              img_url={product.img_url}
+              description={product.description}
+              price={product.price}
+            />)
           })}
         </div>
 
