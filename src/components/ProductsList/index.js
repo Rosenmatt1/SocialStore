@@ -40,7 +40,6 @@ class Products extends Component {
             />)
           })}
         </div>
-
       </div>
     )
   }
