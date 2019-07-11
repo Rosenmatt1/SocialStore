@@ -11,8 +11,6 @@ class Products extends Component {
     fetch('http://localhost:4000/api/products')
       .then(res => res.json())
       .then(data => {
-        console.log("data", data)
-        console.log("names", data.products[0].name)
         this.setState({
           products: data.products
         })
@@ -28,11 +26,13 @@ class Products extends Component {
         <header >
           <h1> Products List </h1>
         </header>
+        
         <div className={styles.productsContainer}>
           {this.state.products.map(product => {
             return (
             <ProductCard 
               key={product.id} 
+              id={product.id}
               name={product.name}
               img_url={product.img_url}
               description={product.description}

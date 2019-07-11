@@ -1,12 +1,11 @@
 import styles from './card.module.scss'
 import React from 'react'
 
-const Card = ({ children, className }) => {
+const Card = ({ children }) => {
   return (
     <div className={styles.card} >
-      { children }
+      {children}
     </div >
-    
   )
 }
 
