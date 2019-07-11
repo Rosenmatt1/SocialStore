@@ -23,6 +23,31 @@ class ProductDetail extends Component {
       })
   }
 
+  initiateStripeCheckout = async () => {
+    console.log("Checkout")
+    const stripe = window.Stripe('pk_test_KvKqn0sBllyJWVVK04UUBaQN00tZcJimdy')
+
+    try {
+      // Initiate checkout session to get session id
+      const response = await fetch('http://localhost:4000/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        // body: JSON.stringify(selectedReports)
+      })
+      const data = await response.json()
+      const sessionId = data.session.id
+      
+      // Redirect to checkout
+      const result = await stripe.redirectToCheckout({ sessionId })
+      // TODO: add error handling for result.error
+    } catch (error) {
+      console.log('STRIPE ERROR', error)
+    }
+  }
+
   render() {
     return (
       <div>
@@ -32,6 +57,7 @@ class ProductDetail extends Component {
           <img src={this.state.product.img_url} alt="product" />
           <p> {this.state.product.description} </p>
           <h3> Price: ${this.state.product.price / 100}.00 </h3>
+          <button onClick={this.initiateStripeCheckout}> Purchase </button>
         </Card>
       </div>
     )
