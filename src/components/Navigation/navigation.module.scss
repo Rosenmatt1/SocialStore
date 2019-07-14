@@ -2,5 +2,14 @@
 
 .navi {
   background-color: #662E9B;
-  height: 1rem;
+  height: calc(3rem + 4px);
+  display: flex;
+  justify-content: flex-start;
+  align-items:center;
+}
+
+.item {
+  margin-left: 1rem;
+  padding: 1rem;
+  border: solid 1px $primary-color;
 }

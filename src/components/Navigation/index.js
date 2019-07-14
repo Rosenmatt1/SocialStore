@@ -5,8 +5,12 @@ import styles from './navigation.module.scss'
 const Navigation = () => {
   return (
     <nav className={styles.navi}>
-      <Link to='/'> Home </Link>
-      <Link to='/products'> Products </Link>
+      <div className={styles.item}>
+        <Link to='/'> Home </Link>
+      </div>
+      <div className={styles.item}>
+        <Link to='/products'> Products </Link>
+      </div>
     </nav>
   )
 }
