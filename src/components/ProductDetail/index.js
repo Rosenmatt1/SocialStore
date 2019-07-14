@@ -9,7 +9,6 @@ class ProductDetail extends Component {
   componentDidMount() {
     console.log("this.props", this.props)
     const id = this.props.match.params.id
-    console.log("id", id)
     fetch(`http://localhost:4000/api/products/${id}`)
       .then(res => res.json())
       .then(data => {
@@ -47,6 +46,7 @@ class ProductDetail extends Component {
         },
         body: JSON.stringify(lineItem)
       })
+
       const data = await response.json()
       const sessionId = data.session.id
       
