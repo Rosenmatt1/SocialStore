@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-import './styles/global.scss'
+import './components/styles/global.scss'
 import Home from './components/Home'
 import Navigation from './components/Navigation'
 import ProductsList from './components/ProductsList'
