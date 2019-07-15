@@ -1,15 +1,40 @@
 @import '../styles/variables';
 
 .navi {
-  background-color: #662E9B;
+  background-color: $secondary-color;
   height: calc(3rem + 4px);
   display: flex;
   justify-content: flex-start;
   align-items:center;
+  border-bottom: solid 1px $primary-color;
 }
 
-.item {
-  margin-left: 1rem;
+.link {
+  background-color: $secondary-color;
   padding: 1rem;
-  border: solid 1px $primary-color;
+  color: $tertiary-color;
+  height: calc(1rem + 4px);
+  width: 3rem;
+}
+
+.link:hover {
+  background-color: $primary-color;
+  color: $tertiary-color;
+  width: 3rem;
+}
+
+.link2 {
+  background-color: $secondary-color;
+  padding: 1rem;
+  color: $tertiary-color;
+  height: calc(1rem + 4px);
+  width: 3rem;
+  padding-right: 2rem;
+}
+
+.link2:hover {
+  background-color: $primary-color;
+  color: $tertiary-color;
+  width: 3rem;
+  padding-right: 2rem;
 }
