@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Card from '../Card'
+import Loader from '../Loader'
 
 class ProductDetail extends Component {
   state = {
-    product: {}
+    product: {},
+    isLoaded: false
   }
 
   componentDidMount() {
@@ -14,7 +16,8 @@ class ProductDetail extends Component {
       .then(data => {
         console.log("data", data)
         this.setState({
-          product: data.product
+          product: data.product,
+          isLoaded: true
         })
       })
       .catch(error => {
@@ -49,7 +52,7 @@ class ProductDetail extends Component {
 
       const data = await response.json()
       const sessionId = data.session.id
-      
+
       // Redirect to checkout
       const result = await stripe.redirectToCheckout({ sessionId })
       // TODO: add error handling for result.error
@@ -62,13 +65,18 @@ class ProductDetail extends Component {
     return (
       <div>
         <h2> Product Detail </h2>
-        <Card>
-          <h2> Product ID: {this.state.product.name} </h2>
-          <img src={this.state.product.img_url} alt="product" />
-          <p> {this.state.product.description} </p>
-          <h3> Price: ${this.state.product.price / 100}.00 </h3>
-          <button onClick={this.initiateStripeCheckout}> Purchase </button>
-        </Card>
+        {this.state.isLoaded
+          ?
+          <Card>
+            <h2> Product ID: {this.state.product.name} </h2>
+            <img src={this.state.product.img_url} alt="product" />
+            <p> {this.state.product.description} </p>
+            <h3> Price: ${this.state.product.price / 100}.00 </h3>
+            <button onClick={this.initiateStripeCheckout}> Purchase </button>
+          </Card>
+          :
+          <Loader />
+        }
       </div>
     )
   }
