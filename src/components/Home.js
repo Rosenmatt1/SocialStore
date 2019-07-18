@@ -1,4 +1,5 @@
 import React from 'react';
+import Loader from './Loader'
 
 const Home = () => {
   return (
@@ -6,6 +7,7 @@ const Home = () => {
       <header className="App-header">
         <h1> Welcome Home </h1>
       </header>
+      <Loader />
     </div>
   )
 }
