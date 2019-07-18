@@ -1,4 +1,5 @@
 {
   "domain": "rosenmatt1.auth0.com",
-  "clientId": "U107nVEpSj6LClp3ogfYHe39aN0z6MtQ"
+  "clientId": "U107nVEpSj6LClp3ogfYHe39aN0z6MtQ",
+  "audience": "http://localhost4000"
 }
