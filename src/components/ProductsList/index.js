@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import ProductCard from './ProductCard'
 import styles from './products-list.module.scss'
+import Loader from '../Loader'
 
 class Products extends Component {
   state = {
-    products: []
+    products: [],
+    isLoaded: false
   }
 
   componentDidMount() {
@@ -12,7 +14,8 @@ class Products extends Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          products: data.products
+          products: data.products,
+          isLoaded: true
         })
       })
       .catch(error => {
@@ -26,20 +29,25 @@ class Products extends Component {
         <header >
           <h1> Products List </h1>
         </header>
-        
-        <div className={styles.productsContainer}>
-          {this.state.products.map(product => {
-            return (
-            <ProductCard 
-              key={product.id} 
-              id={product.id}
-              name={product.name}
-              img_url={product.img_url}
-              description={product.description}
-              price={product.price}
-            />)
-          })}
-        </div>
+        {this.state.isLoaded
+          ?
+          <div className={styles.productsContainer}>
+            {this.state.products.map(product => {
+              return (
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  img_url={product.img_url}
+                  description={product.description}
+                  price={product.price}
+                />)
+            })}
+          </div>
+          :
+          <Loader />
+        }
+
       </div>
     )
   }
