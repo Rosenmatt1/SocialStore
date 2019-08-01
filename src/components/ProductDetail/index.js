@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../Card'
 import Loader from '../Loader'
+import styles from './productDetail.module.scss'
 
 class ProductDetail extends Component {
   state = {
@@ -63,10 +64,13 @@ class ProductDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
         <h2> Product Detail </h2>
+
+
         {this.state.isLoaded
           ?
+          // <div className={styles.card}>
           <Card>
             <h2> Product ID: {this.state.product.name} </h2>
             <img src={this.state.product.img_url} alt="product" />
@@ -74,6 +78,7 @@ class ProductDetail extends Component {
             <h3> Price: ${this.state.product.price / 100}.00 </h3>
             <button onClick={this.initiateStripeCheckout}> Purchase </button>
           </Card>
+          // </div>
           :
           <Loader />
         }
