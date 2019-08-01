@@ -14,7 +14,6 @@ const Navigation = () => {
 
       {isAuthenticated && <Link className={styles.link} to='/profile'> Profile </Link>}
       
-
       {!isAuthenticated && (
         <button
           onClick={() =>
