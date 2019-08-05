@@ -1,10 +1,10 @@
 const apiData = [
   {
     "id": 1,
-    "name": "Awesome Shirt",
-    "description": "Sapiente ut sed labore. Omnis fuga exercitationem explicabo omnis laboriosam. Minima eum consequuntur et illum.",
-    "price": 1500,
-    "img_url": "http://lorempixel.com/640/480",
+    "name": "Red Hat",
+    "description": "One of our most stylish and best selling.",
+    "price": 5,
+    "img_url": "https://www.augustcaps.com/assets/images/2019/0703%20jr%20paisley/thumbnails/kids%20jr%20wholesale%20snapback%20paisley%20red%20_thumbnail.jpghttps://www.augustcaps.com/assets/images/2019/0703%20jr%20paisley/thumbnails/kids%20jr%20wholesale%20snapback%20paisley%20red%20_thumbnail.jpg",
     "category_id": 1
   }
 ]

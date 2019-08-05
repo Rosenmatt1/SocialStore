@@ -13,6 +13,7 @@ class Products extends Component {
     fetch('http://localhost:4000/api/products')
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         this.setState({
           products: data.products,
           isLoaded: true
