@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 describe('<Navigation /> functionality', () => {
   describe('isAuthenticated = false', () => {
+
     test('renders 3 Link components', () => {
       jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
         return {
@@ -16,7 +17,7 @@ describe('<Navigation /> functionality', () => {
       const wrapper = shallow(<Navigation />)
       expect(wrapper.find(Link).length).toBe(3)
     })
-    it('renders 1 button when isAuthenticaed = false', () => {
+    it('renders 1 button', () => {
       jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
         return {
           isAuthenticated: false
@@ -27,29 +28,27 @@ describe('<Navigation /> functionality', () => {
     })
   })
 
-
-
-
-
-  it('<Navigation /> renders 1 button when isAuthenticaed = false', () => {
-    jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
-      return {
-        isAuthenticated: true
-      }
+  describe('isAuthenticated = true', () => {
+    it('<Navigation /> renders 1 button when isAuthenticaed = false', () => {
+      jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
+        return {
+          isAuthenticated: true
+        }
+      })
+      const wrapper = shallow(<Navigation />)
+      expect(wrapper.find('button').length).toBe(1)
+      // expect(wrapper.find('button').html()).toMatch('Log Out')
     })
-    const wrapper = shallow(<Navigation />)
-    expect(wrapper.find('button').length).toBe(1)
-    // expect(wrapper.find('button').html()).toMatch('Log Out')
-  })
 
-  it('renders 4 Link components', () => {
-    jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
-      return {
-        isAuthenticated: true
-      }
+    it('renders 4 Link components', () => {
+      jest.spyOn(Auth0, 'useAuth0').mockImplementation(() => {
+        return {
+          isAuthenticated: true
+        }
+      })
+      const wrapper = shallow(<Navigation />)
+      expect(wrapper.find(Link).length).toBe(4)
     })
-    const wrapper = shallow(<Navigation />)
-    expect(wrapper.find(Link).length).toBe(4)
   })
 
 })
