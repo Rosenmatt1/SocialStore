@@ -17,7 +17,7 @@ const Profile = () => {
       <p>{user.email}</p>
       <code>{JSON.stringify(user, null, 2)}</code>
     </div>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
